@@ -24,7 +24,6 @@ const AddonPage = ({
     setShowPage(true);
     setStoredData((prev) => {
       const updateState = [...prev, selectedCheckbox];
-      console.log(updateState);
       return updateState;
     });
   }
@@ -38,13 +37,22 @@ const AddonPage = ({
     const newId = idRef.current + 1;
     idRef.current = newId;
     setselectedCheckbox((prevValue) => {
-      const isSelected = prevValue.some((item) => item.addons === service);
+      const isSelected = prevValue.some(
+        (item) => item.addon.addons === service
+      );
       if (isSelected) {
         // console.log("already selected remove from the state");
-        return prevValue.filter((item) => item.addons !== service);
+        return prevValue.filter((item) => item.addon.addons !== service);
       } else {
-        return [...prevValue, { id: newId, addons: service, cash: amount }];
+        return [
+          ...prevValue,
+          { addon: { id: newId, addons: service, cash: amount } },
+        ];
       }
+      // return [
+      //   ...prevValue,
+      //   { addon: { id: newId, addons: service, cash: amount } },
+      // ];
     });
   };
 
@@ -192,11 +200,11 @@ const AddonPage = ({
           </button>
         </div>
       </main>
-      {showPage ? (
+      {/* {showPage ? (
         <FinishupPage showPage={showPage} setShowPage={setShowPage} />
       ) : (
         ""
-      )}
+      )} */}
     </div>
   );
 };

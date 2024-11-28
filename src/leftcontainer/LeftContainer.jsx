@@ -1,11 +1,15 @@
 import React from "react";
 
-const LeftContainer = () => {
+const LeftContainer = ({ currentPage }) => {
   return (
     <section className="h-full w-[20vw] bg-blue-400 rounded-md flex flex-col gap-4 p-10 max-sm:w-full max-sm:h-[35%] max-sm:flex-row max-sm:justify-center max-sm:rounded-none max-sm:absolute max-lg:w-auto">
       <div className="flex gap-4">
         <span
-          className={`flex items-center justify-center text-white border border-white rounded-full w-8 h-8 max-sm:text-2xl max-sm:font-medium max-sm:p-5`}
+          className={`flex items-center justify-center  rounded-full w-8 h-8 max-sm:text-2xl max-sm:font-medium max-sm:p-5 ${
+            currentPage === "info"
+              ? "bg-white text-black font-extrabold p-16"
+              : "text-white border border-white"
+          }`}
         >
           1
         </span>

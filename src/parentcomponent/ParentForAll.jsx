@@ -4,11 +4,14 @@ import PlansPage from "../secondpage/PlansPage";
 import AddonPage from "../thirdpage/AddonPage";
 import FinishupPage from "../fourthpage/FinishupPage";
 import SuccessPage from "../fifthpage/SuccessPage";
+import LeftContainer from "../leftcontainer/LeftContainer";
+import { data } from "autoprefixer";
 
 const ParentForAll = () => {
   const [currentPage, setCurrentPage] = useState("info");
 
   const [storedData, setStoredData] = useState([]);
+
   function addplans(data) {
     setStoredData((prev) => [...prev, data]);
   }
@@ -16,12 +19,14 @@ const ParentForAll = () => {
   return (
     <div>
       {currentPage === "info" && (
-        <PersonalInfo
-          setCurrentPage={setCurrentPage}
-          storedData={storedData}
-          setStoredData={setStoredData}
-        />
-      )}
+          <LeftContainer currentPage={currentPage} />
+        ) && (
+          <PersonalInfo
+            setCurrentPage={setCurrentPage}
+            storedData={storedData}
+            setStoredData={setStoredData}
+          />
+        )}
       {currentPage === "planPage" && (
         <PlansPage
           setCurrentPage={setCurrentPage}
